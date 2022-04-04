@@ -1,0 +1,260 @@
+// personnaliser ici les variables de Bootstrap Sass
+
+// Après toute modification, ne pas oublier de recompiler le fichier ui/css/imi/imi4-3.scss
+//    cd Documents/Creative/web/imi-framework/ui/imi/css/
+//    sass --watch imi4-3.scss:imi4-3.css;
+// ATTENTION : pour compiler la première fois, corriger le path de @import dans imi-4-3.scss ligne 2
+
+// voir la liste des variables customisables ici :  https://getbootstrap.com/docs/4.3/getting-started/theming/#sass-options
+
+//ATTENTION : si des breakpoint supplémentaire sont créés, le plus petit doit toujours se nommer "xs"
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+);
+
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+  font-size: 16px !important;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap');
+$font-family-sans-serif:      'Roboto', 'Helvetica Neue', sans-serif;
+$font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !default;
+$font-family-base:            $font-family-sans-serif !default;
+
+$theme-colors: (
+  "project-primary": #ff0000,
+  "project-primary-light-25": rgba(255,0,0,0.25),
+  "project-primary-light-50": rgba(255,0,0,0.5),
+  "project-primary-light-75": rgba(255,0,0,0.75),
+  "project-secondary": #fff800,
+  "project-tertiary": #0000ff,
+  "button-hover":#009900,
+  "gray-100": #f8f9fa,
+  "gray-200": #e9ecef,
+  "gray-300": #dee2e6,
+  "gray-400": #ced4da,
+  "gray-500": #adb5bd,
+  "gray-600": #6c757d,
+  "gray-700": #495057,
+  "gray-800": #343a40,
+  "gray-900": #212529,
+  "black": #000,
+  "linkedin": #00a0dc,
+  "facebook": #3d5c95,
+  "google": #d62d20,
+  "whatsapp": #25D366,
+  "imi-creative": #044968,
+  "imi-framework": #FF6600,
+);
+
+// pour trouver une valeur de la liste map-get($list_name, key);
+// exemple : map-get($theme-colors, whatsapp) retourne #25D366
+// exemple : map-get($theme-colors, project-primary) retourne #455473
+
+// il est également possible de passer par le :root ainsi :
+// a {
+//  color: var(--project-primary);
+// }
+
+
+
+// il existe 5 tailles par défaut dans Bootstrap (1,2,3,4,5)
+// les tailles > 5 peuvent êre ajoutées ci-dessous 
+// il est également possible de changer les tailles <= 5 (voir sur : https://getbootstrap.com/docs/4.3/utilities/spacing/)
+$spacers: (
+  "6" : 5rem,
+  "7" : 6.5rem,
+  "8" : 8rem,
+  "9" : 10rem
+);
+
+
+// des class de font-size et line-height seront générées pour chacune des valeurs ci-dessous
+// les class sont nommées .text-[nom] et .line-height-[nom]
+// exemple : .text-half et .line-height-half
+$theme-em-resizing: (
+  "half": 0.5em,
+  "six-tenth": 0.6em,
+  "two-third": 0.66em,        
+  "three-quarters": 0.75em,
+  "eight-tenth": 0.8em,
+  "nine-tenth": 0.9em,
+  "one": 1em,
+  "one-and-a-tenth": 1.1em,
+  "one-and-a-fifth": 1.2em,
+  "one-and-a-quarter": 1.25em,
+  "one-and-a-third": 1.3em,
+  "one-and-a-half": 1.5em,
+  "one-and-two-third": 1.66em,
+  "one-and-three-quarter": 1.75em,
+  "double": 2em,
+  "triple": 3em
+);
+
+.form-control {
+  border-radius:0 !important;
+}
+
+a:hover {
+  text-decoration:none !important;
+}
+
+
+
+/* 
+Les méthodes suivantes permettent de gérer des class media-queries entre les breakpoint $lower et $upper
+$lower et $upper prennent les noms des breakpoints : sm, md, lg, xl (ou autres ajoutés ci-dessus dans $grid-breakpoints)
+
+- response-above($lower) génère un media-query de type : min-width: $lower
+- response-below($upper) génère un media-query de type : mx-width: $lower
+- response-between($lower, $upper) génère un media-query de type : min-width: $lower AND max-width: $upper
+
+par exemple :
+    @include respond-above(sm) {
+      .element {
+        font-weight: bold;
+      }
+    }
+génère la class :
+    @media (min-width: 768px) {
+      .element {
+        font-weight: bold;
+      }
+    }
+*/
+
+@mixin respond-above($breakpoint) {   //min-width: $breakpoint
+  @if map-has-key($grid-breakpoints, $breakpoint) {
+    $breakpoint-value: map-get($grid-breakpoints, $breakpoint);
+    @media (min-width: $breakpoint-value) {
+      @content;
+    }
+  } @else {
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
+
+@mixin respond-below($breakpoint) {   //max-width: $breakpoint
+  @if map-has-key($grid-breakpoints, $breakpoint) {
+    $breakpoint-value: map-get($grid-breakpoints, $breakpoint);
+    @media (max-width: ($breakpoint-value - 1)) {
+      @content;
+    }
+  } @else {
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
+
+@mixin respond-between($lower, $upper) {  //min-width: $lower AND max-width: $upper
+  @if map-has-key($grid-breakpoints, $lower) and map-has-key($grid-breakpoints, $upper) {
+    $lower-breakpoint: map-get($grid-breakpoints, $lower);
+    $upper-breakpoint: map-get($grid-breakpoints, $upper);
+    @media (min-width: $lower-breakpoint) and (max-width: ($upper-breakpoint - 1)) {
+      @content;
+    }
+  } @else {
+    @if (map-has-key($grid-breakpoints, $lower) == false) {
+      @warn 'Your lower breakpoint was invalid: #{$lower}.';
+    }
+    @if (map-has-key($grid-breakpoints, $upper) == false) {
+      @warn 'Your upper breakpoint was invalid: #{$upper}.';
+    }
+  }
+}
+
+@include respond-above(md) {
+  h1.text-responsive, .text-responsive h1 {
+    font-size: 3vw !important;
+  }
+  h2.text-responsive, .text-responsive h2 {
+    font-size: 2.5vw !important;
+  }
+  h3.text-responsive, .text-responsive h3 {
+    font-size: 2.25vw !important;
+  }
+  h4.text-responsive, .text-responsive h4 {
+    font-size: 2vw !important;
+  }
+  h5.text-responsive, .text-responsive h5 {
+    font-size: 1.75vw !important;
+  }
+  h6.text-responsive, .text-responsive h6 {
+    font-size: 1.5vw !important;
+  }
+}
+
+
+
+/***************************************************/
+/***************************************************/
+/***************************************************/
+/*            CLASS PROPRES AU PROJET              */
+/***************************************************/
+/***************************************************/
+/***************************************************/
+
+/* pour fixer le footer (en position-abolute, bottom:0) en bas de la page et non de la fenêtre */
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
+}
+
+
+/***************************************************/
+/*                                                 */
+/*                   BREAKPOINTS                   */
+/*                                                 */
+/***************************************************/
+
+
+/******************** example **********************/
+
+.my-example {
+  color: var(--blue);
+}
+
+@include respond-above(sm) {
+  .my-example {
+    color: var(--success);
+  }
+}
+
+@include respond-above(lg) {
+  .my-example {
+    color: var(--danger);
+  }
+}
+
+@include respond-above(xl) {
+  .my-example {
+    color: var(--warning);
+  }
+}

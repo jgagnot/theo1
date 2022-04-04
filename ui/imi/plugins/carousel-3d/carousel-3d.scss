@@ -1,0 +1,8 @@
+// cd Documents/Creative/web/imi-playground/ui/imi/css/
+// sass --watch carousel-3d.scss:carousel-3d.css;
+
+.carousel-3d img {
+  display: none; /* on cache les images le temps de la préparation du carousel */
+  cursor: pointer; /* pas utile si les images sont dans des liens */
+  object-fit: cover;
+}

@@ -1,0 +1,10 @@
+@charset "UTF-8";
+.carousel-3d img {
+  display: none;
+  /* on cache les images le temps de la préparation du carousel */
+  cursor: pointer;
+  /* pas utile si les images sont dans des liens */
+  object-fit: cover;
+}
+
+/*# sourceMappingURL=carousel-3d.css.map */

@@ -1,0 +1,48 @@
+Voir : https://github.com/Prinzhorn/skrollr
+
+Une fois skrollr initialisé par var s = skrollr.init() (voir dans le footer), il suffit de rajouter deux états pour agir :
+    l'état initial : data-[y]-(viewport-anchor)-[anchor]="[style]"
+    l'état final : data-[y]-(viewport-anchor)-[anchor]="[stle]"
+
+Les modes absolute ou relative ne se précise pas : cela dépend juste des attributs utilisés (data-start ou data-end pour absolute, data-top ou data-bottom pour relative)
+
+mode absolute : les images clés sont définies en tant que valeurs absolues décrivant le degré de défilement de TOUTE la page (du coup, l'animation se produira même si l'élément se trouve en dehors de la fenêtre d'affichage).
+    data-0 = data-start = data-0-start : lorsque le haut du défilement de la fenêtre est 0.
+    data-100 = data-100-start : lorsque le haut du défilement est 100 (pixels).
+    data--100 = data--100-start : lorsque le haut du défilement est égal à -100 (cela n'a pas de sens puisqu'en dehors de la fenêtre d'affichage).
+    data-end = data-0-end : lorsque offset a la valeur 0, le décompte se fait à partir du bas du document et non du haut. En bref: quand vous atteignez le bas de la page.
+    data-100-end : 100px avant d'atteindre le bas.
+    data--100-end : 100px après avoir atteint le bas (encore une fois, pas de sens).
+
+mode relative : au lieu de définir des images clés relatives au document, nous pouvons les définir en fonction de la position de l'élément lui-même par rapport à la fenêtre d'affichage.
+    data-top = data-0-top = data-top-top = data-0-top-top : lorsque le haut de l'élément est aligné sur le haut de la fenêtre.
+    data-100-top = data-100-top-top : lorsque le haut de l'élément est 100 pixels au-dessus du haut de la fenêtre.
+    data--100-top = data--100-top-top : lorsque le sommet de l'élément est 100 pixels au-dessous du haut de la fenêtre.
+    data-top-bottom = data-0-top-bottom : lorsque le bas de l'élément est en haut de la fenêtre (il n'est tout simplement pas visible).
+    data-center-center = data-0-center-center : lorsque l'élément est au centre de la fenêtre.
+    data-bottom-center = data-0-bottom-center : lorsque le data-0-bottom-center l'élément se trouve en bas de la fenêtre, la moitié supérieure de l'élément est visible.
+
+
+Important :
+    - à l'état initial, l'élément a la class : skrollable-before
+    - entre les deux états, l'élément a la class : skrollable-between
+    - à l'atat final, l'élément a la class : skrollable-after
+
+
+
+
+Un listener peut être instantié en option et renvoyer deux objets (beforerender et render) semblables :
+{
+	curTop: 10, //the current scroll top offset
+	lastTop: 0, //the top value of last time
+	maxTop: 100, //the max value you can scroll to. curTop/maxTop will give you the current progress.
+	direction: 'down' //either up or down
+}
+
+skrollr.init({
+	render: function(data) {
+		//Log the current scroll position.
+		console.log(data.curTop);
+	}
+});
+

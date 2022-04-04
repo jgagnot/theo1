@@ -1,0 +1,49 @@
+<!-- Notification -->
+<div id="toast-container" class="none"></div>
+<!-- Notification End-->
+
+<!-- Express -->
+<div class="modal fade" id="expressModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div id="expressModalRole" class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 id="expressModalTitle" class="modal-title bold project-first-color"></h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body" id="expressModalBody"></div>
+            <div class="modal-footer">
+                <button class="btn btn-light btn-sm" type="button" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Express End-->
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<script>
+
+    $(document).ready(function () {
+        //on affiche le message flash (alert) éventuel
+        {% if f3.SESSION.flashContent|length %}
+        flash('{{ f3.SESSION.flashContent }}','{{ f3.SESSION.flashContainer }}','{{ f3.SESSION.flashType }}',{{ f3.SESSION.flashTimeout }},0,'{{ f3.path }}');
+        {% endif %}
+
+        //on affiche le message express (modal) éventuel
+        {% if f3.SESSION.expressTitle|length %}
+        express('{{ f3.SESSION.expressTitle }}','{{ f3.SESSION.expressBody }}','{{ f3.SESSION.expressWidth }}',0,{{ f3.path }});
+        {% endif %}
+
+        //on affiche le message toast éventuel
+        {% if f3.SESSION.toastContent|length %}
+        toast('{{ f3.SESSION.toastContent }}','{{ f3.SESSION.containerStyle }}','{{ f3.SESSION.toastStyle }}','{{ f3.SESSION.toastEnabledTimeout }}','{{ f3.SESSION.toastDisabledTimeout }}',{{ f3.SESSION.toastClickClose }}, 0,'{{ f3.path }}');
+        {% endif %}
+
+    });
+
+</script>

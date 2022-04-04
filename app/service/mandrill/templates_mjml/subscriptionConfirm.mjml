@@ -1,0 +1,101 @@
+<mjml>
+
+  <mj-head>
+    <mj-font name="Montserrat" href="https://fonts.googleapis.com/css?family=Montserrat" />
+    <mj-attributes>
+      <mj-all font-family="Montserrat, sans-serif" />
+    </mj-attributes>
+  </mj-head>
+
+  <mj-body background-color="#FFF">
+    <mj-section>
+      <mj-column padding-left="0px">
+        <mj-image src="https://les-analyses-cash.fr/project/les-analyses-cash/image/logo.png" align="center" padding-bottom="10px" width="300px" padding-top="0px"></mj-image>
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#ffffff" border-bottom="1px solid black">
+      <mj-column>
+        <mj-text align="left" font-family="helvetica neue" font-size="14px" align="justify">
+          Bonjour Jérémy,
+        </mj-text>
+        <mj-spacer height="5px" />
+        <mj-text padding-bottom="0px" font-family="helvetica neue" font-size="14px" align="justify">
+          Votre abonnement est bien enregistré.
+        </mj-text>
+        <mj-text align="left" font-family="helvetica neue" font-size="14px"> Vous avez dès à présent la possibilité de consulter ou télécharger votre dossier directement sur <a href="https://www.les-analyses-cash.fr/login?next=collection" target="_blank">
+        les-analyses-cash.fr</a>.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#ffffff" border-bottom="1px solid black">
+      <mj-column>
+        <mj-text align="left" font-family="helvetica neue" font-size="18px" font-weight="bold">
+          Récapitulatif de votre abonnement :
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#ffffff" border-bottom="1px solid black">
+      <mj-column>
+        <mj-text font-family="helvetica neue" font-weight="bold" padding-bottom="0px">
+          mode de paiement
+        </mj-text>
+        <mj-text font-family="helvetica neue">
+          Carte bancaire
+        </mj-text>
+      </mj-column>
+      <mj-column>
+        {{#if adress}}
+        <mj-text font-family="helvetica neue" font-weight="bold" padding-bottom="0px">
+          adresse de livraison
+        </mj-text>
+        <mj-text font-family="helvetica neue" padding-bottom="0px">
+          {{adress.line1 }} {{#if adress.line2}}. {{adress.line2}}.{{/if}}
+        </mj-text>
+        <mj-text font-family="helvetica neue" padding-bottom="0px">
+          {{adress.zipcode}}
+        </mj-text>
+        <mj-text font-family="helvetica neue" padding-bottom="0px" font-weight="bold">
+          {{upper adress.city }}
+        </mj-text>
+        {{/if}}
+      </mj-column>
+    </mj-section>
+
+
+    <mj-section background-color="#ffffff">
+      <mj-column>
+        <mj-image width="170px" src="https://les-analyses-cash.fr/project/les-analyses-cash/image/couverture0.jpg"></mj-image>
+      </mj-column>
+      <mj-column>
+        <mj-text font-weight="bold" align="justify" font-size="14px" font-family="helvetica neue" color="#000">
+          {{plan.price}}&nbsp;&euro; par {{plan.interval}}.</mj-text>
+          <mj-text font-family="helvetica neue" padding-bottom="0px">
+            - Informez-vous en accès réservé et <span style="font-weight:900; font-family:helvetica neue">illimité</span> à tous les articles du site <a href="https://www.les-analyses-cash.fr" target="_blank">
+        les-analyses-cash.fr</a>.
+          </mj-text>
+        <mj-text font-family="helvetica neue" padding-bottom="0px">
+           - Recevez tous les mois une analyse
+            <span style="font-weight:900; font-family:helvetica neue">Indépendante</span>
+            et<span style="font-weight:900; font-family:helvetica neue"> sans tabou</span> par courrier.
+        </mj-text>
+        <mj-text font-family="helvetica neue" padding-bottom="0px">
+           - Accès libre à tous vos dossiers, directement depuis le site
+           <a href="https://www.les-analyses-cash.fr" target="_blank">
+        les-analyses-cash.fr</a>.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#0b5e86">
+      <mj-column>
+        <mj-text font-family="helvetica neue" font-size="16px" color="#ffffff" align="center" font-weight="bold">
+          Une question? Un souci avec votre abonnement ?
+        </mj-text>
+        <mj-button font-family="helvetica neue" font-weight="bold" background-color="#ffffff" href="mailto:contact@les-analyses-cash.fr" color="#000">
+          NOUS CONTACTER
+        </mj-button>
+      </mj-column>
+    </mj-section>

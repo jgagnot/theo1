@@ -1,0 +1,129 @@
+<mjml>
+
+  <mj-head>
+    <mj-font name="Montserrat" href="https://fonts.googleapis.com/css?family=Montserrat" />
+    <mj-attributes>
+      <mj-all font-family="Montserrat, sans-serif" />
+    </mj-attributes>
+  </mj-head>
+
+  <mj-body background-color="#FFF">
+    <mj-section>
+        <mj-column padding-left="0px">
+        <mj-image src="https://les-analyses-cash.fr/project/les-analyses-cash/image/logo.png" align="center" padding-bottom="10px" width="300px" padding-top="0px"></mj-image>
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#ffffff" border-bottom="1px solid black">
+      <mj-column>
+        <mj-text align="left" font-family="helvetica" font-size="14px" align="justify">
+          Bonjour {{user.firstname}},
+        </mj-text>
+        <mj-spacer height="5px" />
+        <mj-text padding-bottom="0px" font-family="helvetica" font-size="14px" align="justify">
+          Merci pour votre commande sur <a href="https://www.les-analyses-cash.fr" style="text-decoration: none;" target="_blank">les-analyses-cash.fr</a>.
+        </mj-text>
+
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#ffffff" border-bottom="1px solid black">
+      <mj-column>
+        <mj-text align="left" font-family="helvetica" font-size="18px" font-weight="bold">
+          Récapitulatif de votre commande {{order.commercialid}}:
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#ffffff" border-bottom="1px solid black">
+      <mj-column>
+        <mj-text font-family="helvetica" font-weight="bold" padding-bottom="0px">
+          mode de paiement&nbsp;:
+        </mj-text>
+        <mj-text font-family="helvetica">
+          Carte bancaire
+        </mj-text>
+        <mj-text font-family="helvetica" font-weight="bold" padding-bottom="0px">
+          expédition prévue le:
+        </mj-text>
+         <mj-text font-family="helvetica">
+           {{order.shippingdate}}
+        </mj-text>
+      </mj-column>
+      <mj-column>
+        {{#if adress}}
+        <mj-text font-family="helvetica" font-weight="bold" padding-bottom="0px">
+          adresse de livraison
+        </mj-text>
+        <mj-text font-family="helvetica" padding-bottom="0px">
+          {{adress.line1 }} {{#if adress.line2}}. {{adress.line2}}.{{/if}}
+        </mj-text>
+        <mj-text font-family="helvetica" padding-bottom="0px">
+          {{adress.zipcode}}
+        </mj-text>
+        <mj-text font-family="helvetica" padding-bottom="0px" font-weight="bold">
+          {{upper adress.city }}
+        </mj-text>
+        {{/if}}
+      </mj-column>
+    </mj-section>
+
+    {{#each order.lines }}
+    <mj-section background-color="#ffffff">
+      <mj-column>
+        <mj-image width="170px" src="https://jeandeportal.imi-framework.io/{{this.image.0.path}}"></mj-image>
+      </mj-column>
+      <mj-column>
+        <mj-text font-weight="bold" align="justify" font-size="14px" font-family="helvetica" color="#000">
+          <a style="color: inherit;" href="https://jeandeportal.fr/{{this.item.seoUrl}}">{{striptags this.item.name}}</a></mj-text>
+        <mj-text align="justify" font-size="12px" color="#bbbbbb" font-family="helvetica">{{striptags this.item.description}}</mj-text>
+        <mj-text align="justify" font-size="15px" color="#000" font-family="helvetica">Quantité: {{this.quantity}}</mj-text>
+        <mj-text align="justify" font-size="15px" color="#000" font-family="helvetica">Prix: {{this.referenceprice.discountprice}} &euro;</mj-text>=
+      </mj-column>
+    </mj-section>
+    {{ /each }}
+    <mj-section background-color="#ffffff" border-top="1px solid black">
+      <mj-column>
+      </mj-column>
+      <mj-column>
+        <mj-table>
+          <tr>
+            <th style="padding: 0 15px 0 0;text-align:left;color:#000;font-family:helvetica">Sous-total :</th>
+            <th style="padding: 0 0 0 15px;text-align:right;font-family:helvetica;font-weight:normal">{{order.subtotal}} &euro;</th>
+          </tr>
+
+
+             <tr>
+            <th style="padding: 0 15px 0 0;text-align:left;color:#000;font-family:helvetica">Frais de port :</th>
+            <th style="padding: 0 0 0 15px;text-align:right;font-family:helvetica;font-weight:normal">{{order.shippingprice}} &euro;</th>
+          </tr>
+
+          <tr>
+            <th style="padding: 0 15px 0 0;text-align:left;color:#000;font-family:helvetica">TVA :</th>
+            <th style="padding: 0 0 0 15px;text-align:right;font-family:helvetica;font-weight:normal">{{order.vat}} &euro;</th>
+          </tr>
+          <tr style="border-top:1px solid black;">
+            <th style="padding: 0 15px 0 0;text-align:left;color:#000;font-family:helvetica">Total de la commande :</th>
+            <th style="padding: 0 0 0 15px;text-align:right;font-family:helvetica;font-weight:normal">{{order.total}} &euro;</th>
+          </tr>
+        </mj-table>
+      </mj-column>
+    </mj-section>
+
+    <mj-section>
+      <mj-column>
+        <mj-text align="left" font-family="helvetica" font-size="16px" > Vous avez dès à présent la possibilité de consulter ou télécharger votre dossier directement en{{#if user.password}} vous connectant sur  <a href="https://www.les-analyses-cash.fr/login?next=collection" target="_blank"> les-analyses-cash.fr</a>{{else}} créant votre compte sur <a href="https://www.les-analyses-cash.fr/register?next=collection" target="_blank"> les-analyses-cash.fr</a>{{#/if}}.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#0b5e86">
+      <mj-column>
+        <mj-text font-family="helvetica" font-size="16px" color="#ffffff" align="center" font-weight="bold">
+          Une question? Un souci avec votre commande?
+        </mj-text>
+        <mj-button font-family="Helvetica" font-weight="bold" background-color="#ffffff" href="mailto:contact@les-analyses-cash.fr" color="#000">
+          NOUS CONTACTER
+        </mj-button>
+      </mj-column>
+    </mj-section>

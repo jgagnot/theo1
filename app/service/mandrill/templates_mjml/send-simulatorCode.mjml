@@ -1,0 +1,47 @@
+<mjml>
+
+  <mj-head>
+    <mj-font name="Montserrat" href="https://fonts.googleapis.com/css?family=Montserrat" />
+    <mj-attributes>
+      <mj-all font-family="Montserrat, sans-serif" />
+    </mj-attributes>
+  </mj-head>
+
+  <mj-body background-color="#ffffff">
+    <mj-section background-color="#f5f7f9" border-bottom="40px solid #0b5e86" >
+        <mj-column padding-left="0px">
+        <mj-image src="http://les-analyses-cash.fr/project/les-analyses-cash/image/logo.png" align="center" padding-bottom="10px" width="400px" padding-top="0px"></mj-image>
+      </mj-column>
+    </mj-section>
+
+  <mj-section background-color="#f5f7f9">
+  <mj-column>
+      <mj-text align="center">Voici le code personnel vous permettant d'accéder au simulateur <a href='les-analyses-cash.fr'>
+       les-analyses-cash.fr:
+      </a></mj-text>
+
+  </mj-column>
+</mj-section>
+
+  <mj-section background-color="#f5f7f9">
+      <mj-column>
+          <mj-text align="center" color='#0b5e86' font-family="helvetica" ><h1 font-weight="5p">{{CODE}}</h1></mj-text>
+      </mj-column>
+</mj-section>
+
+<mj-section background-color="#f5f7f9" border-bottom="1px solid #0b5e86">
+  <mj-column>
+      <mj-text color="#cacaca">Vous n'êtes pas à l'origine de cette inscription ? Ne prenez pas en compte cet email.</mj-text>
+  </mj-column>
+
+</mj-section>
+<mj-section background-color="#f0f0f0">
+    <mj-column>
+        <mj-text align="center">
+            © Copyright {{YEAR}} - jeandeportal. Tous droits réservés.
+        </mj-text>
+    </mj-column>
+</mj-section>
+
+  </mj-body>
+</mjml>

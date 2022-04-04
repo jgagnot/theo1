@@ -1,0 +1,28 @@
+1 - Aller sur https://github.com/F3Community/fatfree-composer-app
+
+2 - Télécharger le fichier zip et le dézipper dans le répertoire du projet
+
+3 - Dans la console, aller à la racine du projet
+
+4 - Taper la commande : composer install
+
+5 - Rajouter manuellement un fichier config.ini à la racine
+
+6 - Créer un .htaccess (placé dans le même répertoire que index.php) :
+	RewriteEngine On
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME} !-l
+	RewriteRule .* index.php [L,QSA] 
+
+7 - Pour injecter Twig : 
+Dans composer.json (à la racine) , rajouter dans «  require » :  "twig/twig": "1.9"
+(Ensuite dans la console, faire un : composer update pour récupérer twig)
+
+Dans le fichier index.php rajouter le code suivant :
+$twig = new Twig_Environment(new Twig_Loader_Filesystem(‘ui/'), [
+    'debug'       => false,  'cache'       => 'tmp/cache/', 'auto_reload' => true
+]);
+$twig->addFilter('f3' , new Twig_Filter_Function( ['f3', 'get']) );
+
+ui/ est le nom du répertoire où se trouve les fichiers , le modifier si nécessaire

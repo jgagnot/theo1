@@ -1,0 +1,38 @@
+// cd Documents/Creative/web/imi-framework/ui/imi/plugins/confetti/
+// sass --watch confetti.scss:confetti.css;
+
+.confetti {
+  position: relative;
+  height: 5px;
+  z-index:0;
+}
+
+.confetti .svg-inline--fa {
+  width: 100% !important;
+  height: auto !important;
+}
+
+.confetti-launchstep {
+  position: relative;
+  z-index: 1;
+}
+
+$confetti-colors: (
+        "0": #ffff00,
+        "1": #ff9900,
+        "2": #ff0000,
+        "3": #00aa00,
+        "4": #637aff,
+        "5": #0043ff,
+        "6": #00caff,
+        "7": #9d6bff,
+        "8": #68d624,
+        "9": #ff92d1,
+        "10": #ffce00,
+);
+
+@each $color, $value in $confetti-colors {
+  .confetti-color-#{$color} {
+    fill: $value;
+  }
+}

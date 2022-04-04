@@ -1,0 +1,20 @@
+{
+    "name": "signaturit/signaturit-sdk",
+    "description": "Signaturit PHP SDK",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Signaturit",
+            "email": "api@signaturit.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "guzzlehttp/guzzle": "~6.0"
+    },
+    "autoload" : {
+        "psr-0":  {
+            "Signaturit": "lib/"
+        }
+    }
+}

@@ -1,0 +1,22 @@
+
+.ck-image-texte-left {
+  float: left;
+}
+.ck-image-texte-right {
+  float: right;
+}
+
+.ck-image-left {
+  display: flex;
+  margin-right: auto !important;
+}
+.ck-image-right {
+  display: flex;
+  margin-left: auto!important;
+}
+
+.ck-image-center {
+  display: flex;
+  margin-left: auto!important;
+  margin-right: auto !important;
+}

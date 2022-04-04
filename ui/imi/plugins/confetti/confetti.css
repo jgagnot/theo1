@@ -1,0 +1,61 @@
+.confetti {
+  position: relative;
+  height: 5px;
+  z-index: 0;
+}
+
+.confetti .svg-inline--fa {
+  width: 100% !important;
+  height: auto !important;
+}
+
+.confetti-launchstep {
+  position: relative;
+  z-index: 1;
+}
+
+.confetti-color-0 {
+  fill: #ffff00;
+}
+
+.confetti-color-1 {
+  fill: #ff9900;
+}
+
+.confetti-color-2 {
+  fill: #ff0000;
+}
+
+.confetti-color-3 {
+  fill: #00aa00;
+}
+
+.confetti-color-4 {
+  fill: #637aff;
+}
+
+.confetti-color-5 {
+  fill: #0043ff;
+}
+
+.confetti-color-6 {
+  fill: #00caff;
+}
+
+.confetti-color-7 {
+  fill: #9d6bff;
+}
+
+.confetti-color-8 {
+  fill: #68d624;
+}
+
+.confetti-color-9 {
+  fill: #ff92d1;
+}
+
+.confetti-color-10 {
+  fill: #ffce00;
+}
+
+/*# sourceMappingURL=confetti.css.map */
